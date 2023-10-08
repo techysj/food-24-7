@@ -1,3 +1,89 @@
-#heading{
-    color:red;
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700;800&family=Noto+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap");
+html {
+  /* font-family: 'M PLUS Rounded 1c', sans-serif; */
+  /* font-family: 'Noto Sans', sans-serif; */
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar-track {
+  background-color: hsla(233, 8%, 81%, 0.08);
+}
+::-webkit-scrollbar-thumb {
+  background-color: #cacbd2;
+  border-radius: 8px;
+}
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2%;
+  box-shadow: 0 15px 40px -20px rgba(40, 44, 63, 0.15);
+  background-color: white;
+  margin-bottom: 40px;
+}
+.logo-container img {
+  width: 100px;
+  height: auto;
+}
+.navLinks-container {
+  display: flex;
+  list-style: none;
+}
+li.nav-link {
+  margin: 20px;
+}
+
+.cards-container {
+  padding: 0 11%;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.restroCard {
+  width: 23%;
+  filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px 2px 8px);
+  cursor: pointer;
+  text-decoration: none;
+}
+.restroCard:hover {
+  transform: scale(0.95, 0.95);
+  transform-origin: center center;
+  transition: all 0.1s ease-in 0s;
+}
+.restroCard img {
+  width: 100%;
+  height: 200px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+.restroCard .restroInfo {
+  margin: 15px 0 0 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.restroCard .restroName {
+  color: #02060cbf;
+  font-size: 20px;
+  font-weight: 500;
+}
+.restroCard .cuisineName {
+  color: #02060c99;
+  font-size: 15px;
+  font-weight: 500;
+}
+.restroCard .restroRating {
+  color: #02060c99;
+  font-size: 12px;
+  font-weight: 500;
 }
