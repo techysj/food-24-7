@@ -6,6 +6,7 @@ class About extends Component {
     return (
       <div>
         <UserClass name={"First"} location={"Class"} />
+        <User name={"First"} location={"Class"} />
       </div>
     );
   }

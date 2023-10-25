@@ -1,6 +1,12 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 const User = ({ name, location }) => {
   const [count] = useState(0);
+  useEffect(()=>{
+    var timer = setInterval(() => {
+      console.log("timer insON")
+    }, 1000);
+    return () => clearInterval(timer)
+  },[])
   return (
     <div className="user-card">
       <h4>count F: {count}</h4>

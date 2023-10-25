@@ -16,6 +16,14 @@ class UserClass extends React.Component {
     this.setState({
       userInfo: json,
     });
+    this.timer = setInterval(() => {
+      console.log("timer insON")
+    }, 1000);
+  }
+
+  componentWillUnmount(){
+    // Clean up of timers , intervals, and subscriptions will be done here
+    clearInterval(this.timer);
   }
 
   render() {
