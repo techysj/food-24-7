@@ -8,16 +8,16 @@ const Header = () => {
   const onlineStatus = useOnlineState();
 
   return (
-    <div className="header">
-      <div className="logo-container">
-        <img src={LOGO_URL} alt="logo" />
-      </div>
+    <div className="flex items-center justify-between px-[2%] py-0 shadow-lg mb-10">
+      <Link to="/">
+        <div className="logo-container">
+          <img className="w-28" src={LOGO_URL} alt="logo" />
+        </div>
+      </Link>
+
       <div className="menu-container">
-        <ul className="navLinks-container">
+        <ul className="flex gap-5">
           <li>Online Status:{onlineStatus ? "green" : "red"}</li>
-          <li className="nav-link">
-            <Link to="/">Home</Link>
-          </li>
           <li className="nav-link">
             <Link to="/contact">Contact Us</Link>
           </li>
