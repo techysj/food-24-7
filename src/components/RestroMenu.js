@@ -22,7 +22,7 @@ const RestroMenu = () => {
     menuInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards[3]?.card?.card
       ?.itemCards;
   return (
-    <div className="menuPage">
+    <div className="max-w-[800px] mx-auto ">
       {itemCards.map((menuItem) => {
         return <MenuCard key={menuItem.card.info.id} menuData={menuItem} />;
       })}
