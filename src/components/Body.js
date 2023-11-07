@@ -1,23 +1,24 @@
-import RestroContainer from "./RestroContainer";
-import { useState, useEffect } from "react";
+import RestroContainer, { withPromotedLabel } from "./RestroContainer";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
-// import useRestroFetch from "../utils/useRestroFetch";
+import { Link } from "react-router-dom";
+import { RESTROS_API } from "../utils/constants";
 import useOnlineState from "../utils/useOnlineState";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
-  const [resDataState, setResDataState] = useState([]); // --> we will do filteringfrom this i.e our orignal list of resto which never will be updated
-  const [resFilteredDataState, setresFilteredDataState] = useState([]); //---> created to store the filtered data we'll render this whnever we do filter or anything
-  // since this will be updated on filtering thus we will use the orignal list of resto to filter the data and render this only
+  const [resDataState, setResDataState] = useState([]);
+  const [resFilteredDataState, setresFilteredDataState] = useState([]);
+  const ResPromotedData = withPromotedLabel(RestroContainer);
+  const { user, setUserName } = useContext(UserContext);
 
   useEffect(() => {
     fetchdata();
   }, []);
+
   const fetchdata = async () => {
-    // your api call logic here and update the state with received data
-    const API =
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5456897&lng=77.3882686&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
-    const API_DATA = await fetch(API);
+    const API_DATA = await fetch(RESTROS_API);
     const JSON_DATA = await API_DATA.json();
     var restroArray =
       JSON_DATA?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
@@ -32,22 +33,9 @@ const Body = () => {
     return <h2>Offline</h2>;
   }
 
-  if (resDataState.length === 0) {
-    return (
-      <div className="shimmer-container">
-        <Shimmer />
-        <Shimmer />
-        <Shimmer />
-        <Shimmer />
-        <Shimmer />
-        <Shimmer />
-        <Shimmer />
-        <Shimmer />
-      </div>
-    );
-  }
-
-  return (
+  return resDataState.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="px-[11%]">
       <div className="flex items-center gap-5 mb-6">
         <div className="search-container">
@@ -69,7 +57,7 @@ const Body = () => {
               setresFilteredDataState(searchFilter);
             }}
           >
-            Search
+            Search 🔍
           </button>
         </div>
         <div className="filterBest-container">
@@ -85,10 +73,28 @@ const Body = () => {
             Top Restasurents ⭐
           </button>
         </div>
+        <input
+          className="border border-solid border-[#E1E1E6]  shadow-md   rounded-[4px] py-[4px] px-[8px] mr-5 text-sm"
+          type="text"
+          value={user}
+          onChange={(e) => {
+            setUserName(e.target.value);
+          }}
+        />
       </div>
       <div className="flex flex-wrap gap-5">
         {resFilteredDataState.map((restaurent) => (
-          <RestroContainer key={restaurent.info.id} resData={restaurent} />
+          <Link
+            to={"/restaurent/" + restaurent.info.id}
+            className="restroCard w-[23%] drop-shadow-sm"
+            key={restaurent.info.id}
+          >
+            {restaurent.info.veg ? (
+              <ResPromotedData resData={restaurent} />
+            ) : (
+              <RestroContainer resData={restaurent} />
+            )}
+          </Link>
         ))}
       </div>
     </div>
