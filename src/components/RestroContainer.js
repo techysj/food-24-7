@@ -2,7 +2,7 @@ import { CDN_URL } from "../utils/constants";
 
 const RestroContainer = (props) => {
   const { resData } = props;
-  const { name, cuisines, avgRating, cloudinaryImageId, id } = resData?.info; //this is called optional chaining --
+  const { name, cuisines, avgRating, cloudinaryImageId } = resData?.info; //this is called optional chaining --
   //  we dont need to  do resdata.info.name, resdata.info .cuisines to access the data
   return (
     <div className="restroCard-container">
@@ -25,7 +25,9 @@ export const withPromotedLabel = (RestroContainer) => {
   return (props) => {
     return (
       <>
-        <label className="absolute px-1 py-[2px] bg-slate-900 text-white text-xs rounded-[4px] tracking-[0.5px]">Promoted</label>
+        <label className="absolute px-2 py-[2px] bg-green-700 text-white text-xs rounded-[4px] tracking-[0.5px]">
+          Veg
+        </label>
         <RestroContainer {...props} />
       </>
     );

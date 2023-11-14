@@ -1,6 +1,12 @@
+import { useDispatch } from "react-redux";
 import { MENU_IMAGES } from "../utils/constants";
 import { PLACEHOLDER_IMAGE } from "../utils/constants";
+import { addItem } from "../utils/cartStoreSlice";
 const MenuCard = ({ menuListItem }) => {
+  const dispatch = useDispatch();
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
   return (
     <div className="mt-6">
       {menuListItem.map((item) => (
@@ -16,36 +22,36 @@ const MenuCard = ({ menuListItem }) => {
               &#8377;
               {item.card.info.defaultPrice / 100 || item.card.info.price / 100}
             </h4>
-            {(() => {
-              if (item.card.info.description) {
-                return (
-                  <p className="text-sm text-[#5c5f8f] font-medium mt-2">
-                    {item.card.info.description}
-                  </p>
-                );
-              }
-            })()}
+            {item.card.info.description ? (
+              <p className="text-sm text-[#5c5f8f] font-medium mt-2">
+                {item.card.info.description}
+              </p>
+            ) : (
+              false
+            )}
           </div>
-          <div className="right-section">
-            {(() => {
-              if (item.card.info.imageId) {
-                return (
-                  <img
-                    className="h-[110px] w-[120px] rounded-md object-cover"
-                    alt="foodfood"
-                    src={MENU_IMAGES + item.card.info.imageId}
-                  />
-                );
-              } else {
-                return (
-                  <img
-                    className="h-[110px] w-[120px] rounded-md object-cover"
-                    alt="foodfood"
-                    src={PLACEHOLDER_IMAGE}
-                  />
-                );
-              }
-            })()}
+          <div className="right-section relative">
+            <div className="absolute bottom-2 left-1/2 translate-x-[-50%] text-sm text-green-600 ">
+              <button
+                className="uppercase bg-white w-24 h-7 rounded-md font-bold shadow-md"
+                onClick={() => handleAddItem(item)}
+              >
+                Add
+              </button>
+            </div>
+            {item.card.info.imageId ? (
+              <img
+                className="h-[110px] w-[120px] rounded-md object-cover"
+                alt="foodfood"
+                src={MENU_IMAGES + item.card.info.imageId}
+              />
+            ) : (
+              <img
+                className="h-[110px] w-[120px] rounded-md object-cover"
+                alt="foodfood"
+                src={PLACEHOLDER_IMAGE}
+              />
+            )}
           </div>
         </div>
       ))}
