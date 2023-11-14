@@ -7,9 +7,11 @@ import About from "./components/About";
 import Error from "./components/Error";
 import RestroMenu from "./components/RestroMenu";
 import UserContext from "./utils/UserContext";
-import { UserName } from "./utils/UserContext";
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 const Contact = lazy(() => import("./components/Contact"));
 
 const AppLayout = () => {
@@ -22,15 +24,14 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user: userName, setUserName }}>
-      <div className="app">
-        <Header />
-    <UserName.Provider value={'baba'}>
-        <Outlet />
-    </UserName.Provider>
-
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ user: userName, setUserName }}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -58,6 +59,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurent/:restroID",
         element: <RestroMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,
