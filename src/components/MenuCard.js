@@ -12,6 +12,7 @@ const MenuCard = ({ menuListItem }) => {
       {menuListItem.map((item) => (
         <div
           key={item.card.info.id}
+          data-testid="menuItem"
           className="flex items-start justify-between pb-[15px] mb-[15px] border-b-[0.5px] border-[#d3d3d3]"
         >
           <div className="w-9/12">
@@ -33,6 +34,7 @@ const MenuCard = ({ menuListItem }) => {
           <div className="right-section relative">
             <div className="absolute bottom-2 left-1/2 translate-x-[-50%] text-sm text-green-600 ">
               <button
+                data-testid="addToCartBtn"
                 className="uppercase bg-white w-24 h-7 rounded-md font-bold shadow-md"
                 onClick={() => handleAddItem(item)}
               >

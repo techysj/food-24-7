@@ -5,7 +5,7 @@ const RestroContainer = (props) => {
   const { name, cuisines, avgRating, cloudinaryImageId } = resData?.info; //this is called optional chaining --
   //  we dont need to  do resdata.info.name, resdata.info .cuisines to access the data
   return (
-    <div className="restroCard-container">
+    <div className="restroCard-container" data-testid="resCard">
       <img
         className="w-full h-[200px] object-cover rounded-xl mb-2"
         src={CDN_URL + cloudinaryImageId}
