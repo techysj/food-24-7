@@ -1,5 +1,5 @@
 import MenuCard from "./MenuCard";
-
+import { SlArrowUp, SlArrowDown } from "react-icons/sl";
 const RestaurentCategory = ({
   menuData,
   showItems,
@@ -21,7 +21,7 @@ const RestaurentCategory = ({
           {menuData?.card?.card?.title} (
           {menuData?.card?.card?.itemCards.length})
         </h1>
-        <p>{showItems ? "🔼" : "🔽"}</p>
+        <p className="mr-2">{showItems ? <SlArrowUp /> : <SlArrowDown />}</p>
       </div>
       {showItems && <MenuCard menuListItem={menuData?.card?.card?.itemCards} />}
     </div>

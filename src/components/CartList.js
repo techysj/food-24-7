@@ -1,32 +1,22 @@
 import { useDispatch } from "react-redux";
 import { MENU_IMAGES } from "../utils/constants";
 import { PLACEHOLDER_IMAGE } from "../utils/constants";
-import { addItem } from "../utils/cartStoreSlice";
-import { useState } from "react";
+import { removeItem } from "../utils/cartStoreSlice";
 import toast, { Toaster } from "react-hot-toast";
-const MenuCard = ({ menuListItem }) => {
+const CartList = ({ cartListItem }) => {
   const dispatch = useDispatch();
-  const [currentId, setCurrentId] = useState("");
 
-  const handleAddItem = (item) => {
-    setCurrentId(item?.card?.info?.id);
-    if (currentId != item.card.info.id) {
-      dispatch(addItem(item));
-      toast.success("Added to the Cart", {
-        position: "top-center",
-        duration: 1500,
-      });
-    }else{
-      toast.error("Item already added to the Cart", {
-        position: "top-center",
-        duration: 1500,
-      });
-    }
+  const handleRemoveItem = (item) => {
+    dispatch(removeItem(item?.card?.info?.id));
+    toast.success("Item removed Succesfully from the Cart", {
+      position: "top-center",
+      duration: 1500,
+    });
   };
   return (
     <>
       <div className="mt-6">
-        {menuListItem.map((item) => (
+        {cartListItem.map((item) => (
           <div
             key={item.card.info.id}
             data-testid="menuItem"
@@ -50,13 +40,13 @@ const MenuCard = ({ menuListItem }) => {
               )}
             </div>
             <div className="right-section relative">
-              <div className="absolute bottom-2 left-1/2 translate-x-[-50%] text-sm text-green-600 ">
+              <div className="absolute bottom-2 left-1/2 translate-x-[-50%] text-sm ">
                 <button
                   data-testid="addToCartBtn"
-                  className="uppercase bg-white w-24 h-7 rounded-md font-bold shadow-md"
-                  onClick={() => handleAddItem(item)}
+                  className="uppercase bg-white w-24 h-7 rounded-md font-bold shadow-md text-red-600"
+                  onClick={() => handleRemoveItem(item)}
                 >
-                  Add
+                  Remove
                 </button>
               </div>
               {item.card.info.imageId ? (
@@ -80,4 +70,4 @@ const MenuCard = ({ menuListItem }) => {
     </>
   );
 };
-export default MenuCard;
+export default CartList;

@@ -1,16 +1,11 @@
-import User from "./User";
 import UserClass from "./UserClass";
 import { Component } from "react";
 import UserContext from "../utils/UserContext";
 class About extends Component {
   render() {
     return (
-      <div>
-        <UserContext.Consumer>
-          {({ user }) => <h1 className="font-bold">{user}</h1>}
-        </UserContext.Consumer>
+      <div className="h-screen flex items-center justify-center bg-[url(https://img.freepik.com/free-photo/top-close-up-view-vegetables-tomatoes-with-pedicels-garlic-bell-peppers-lemon-oil-onion_140725-72203.jpg)] bg-cover">
         <UserClass name={"First"} location={"Class"} />
-        <User name={"First"} location={"Class"} />
       </div>
     );
   }

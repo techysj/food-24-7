@@ -12,14 +12,14 @@ const RestroMenu = () => {
 
   if (menuInfo.length === 0) {
     return (
-      <div className="max-w-[800px] mx-auto">
+      <div className="max-w-[800px] mt-10 mx-auto px-[11%] h-screen lg:px-0">
         <ShimmerMenu />
       </div>
     );
   }
 
-  const itemCards =
-    menuInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards;
+  const itemCards = menuInfo?.cards.find((x) => x?.groupedCard)?.groupedCard
+    ?.cardGroupMap?.REGULAR.cards;
   const menuRestroInfo = menuInfo?.cards[0];
   const categories = itemCards.filter(
     (c) =>
@@ -27,7 +27,7 @@ const RestroMenu = () => {
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
   return (
-    <div className="max-w-[800px] mx-auto pb-16">
+    <div className="max-w-[800px] mx-auto mt-10 pb-16 px-[5%] lg:px-0">
       <RestroMenuInfo menuRestaurentInfo={menuRestroInfo} />
 
       {categories.map((categories, index) => {
@@ -37,9 +37,11 @@ const RestroMenu = () => {
             menuData={categories}
             showItems={index === showIndex ? true : false}
             setshowIndex={() => setshowIndex(index)}
-            setVisibleIndexNull = {()=>{setshowIndex(null);}}
+            setVisibleIndexNull={() => {
+              setshowIndex(null);
+            }}
             visibleIndex={showIndex}
-            currentIndex = {index}
+            currentIndex={index}
           />
         );
       })}
