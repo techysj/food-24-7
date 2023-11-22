@@ -18,7 +18,7 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.item);
 
   return (
-    <div className="flex items-center justify-between px-[2%] h-[85px] shadow-lg sticky top-0 bg-white z-10">
+    <div className="flex items-center justify-between px-[2%] h-[85px] shadow-lg fixed w-full top-0 bg-white z-10">
       <Link to="/">
         <div className="flex items-center">
           <img

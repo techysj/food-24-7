@@ -9,7 +9,7 @@ const RestroMenuInfo = ({ menuRestaurentInfo }) => {
   } = menuRestaurentInfo?.card?.card?.info;
   return (
     <div className="flex justify-between mb-5 pb-5 border-b border-[#d3d3d3]">
-      <div>
+      <div className="w-3/4">
         <p className="text-lg font-semibold text-[#282c3f]">{name}</p>
         <p className="text-sm font-medium text-[#7e808c]">{cuisines.join(', ')}</p>
         <p className="text-sm font-medium text-[#7e808c]">

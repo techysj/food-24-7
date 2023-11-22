@@ -57,14 +57,14 @@ const Body = () => {
     return <Shimmer />;
   }
   return (
-    <div className="px-[11%] pb-28 mt-10 ">
-      <div className="flex flex-wrap items-center gap-5 mb-6">
+    <div className="px-[11%]  mt-10 pt-20 pb-28 min-h-screen">
+      <div className="flex flex-wrap items-center gap-3 mb-6">
         <div className="search-container">
           <input
-            className="border border-solid border-[#E1E1E6]  shadow-md   rounded-[4px] py-[4px] px-[8px] mr-5 text-sm"
+            className="border border-solid border-[#E1E1E6] selection:shadow-md rounded-[4px] py-[4px] px-[8px] text-sm"
             data-testid="searchInput"
             type="text"
-            placeholder="Search for products..."
+            placeholder="Search..."
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
@@ -82,7 +82,7 @@ const Body = () => {
               setresFilteredDataState(filteredData);
             }}
           >
-            Top Restasurents ⭐
+            Top Rated Restasurents ⭐
           </button>
         </div>
       </div>

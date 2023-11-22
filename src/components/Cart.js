@@ -11,7 +11,7 @@ const Cart = () => {
     dispatch(clearCart());
   };
   return (
-    <div className="max-w-[800px] mx-auto mt-10 h-screen px-[5%] lg:px-0">
+    <div className="max-w-[800px]  mx-auto pt-28 pb-28  px-3 min-h-screen">
       <div className="flex items-center justify-between">
         {menuItems.length != 0 && (
           <>

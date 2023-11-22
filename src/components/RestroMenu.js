@@ -12,7 +12,7 @@ const RestroMenu = () => {
 
   if (menuInfo.length === 0) {
     return (
-      <div className="max-w-[800px] mt-10 mx-auto px-[11%] h-screen lg:px-0">
+      <div className="max-w-[800px] mt-10 mx-auto pt-28 pb-28 min-h-screen lg:px-0">
         <ShimmerMenu />
       </div>
     );
@@ -27,7 +27,7 @@ const RestroMenu = () => {
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
   return (
-    <div className="max-w-[800px] mx-auto mt-10 pb-16 px-[5%] lg:px-0">
+    <div className="max-w-[800px] mx-auto pt-28 pb-28 min-h-screen px-[5%] lg:px-0 ">
       <RestroMenuInfo menuRestaurentInfo={menuRestroInfo} />
 
       {categories.map((categories, index) => {
