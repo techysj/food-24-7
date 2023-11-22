@@ -1,9 +1,8 @@
 import RestroContainer, { withPromotedLabel } from "./RestroContainer";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { RESTROS_API } from "../utils/constants";
-import useOnlineState from "../utils/useOnlineState";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
@@ -47,11 +46,6 @@ const Body = () => {
     setResDataState(restroArray);
     setresFilteredDataState(restroArray);
   };
-
-  const checkOnlineState = useOnlineState();
-  if (checkOnlineState === false) {
-    return <h2>Offline</h2>;
-  }
 
   if (resDataState.length === 0 && resFilteredDataState.length === 0) {
     return <Shimmer />;
