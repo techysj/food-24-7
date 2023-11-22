@@ -9,8 +9,6 @@
 - [🛠 Built With](#built-with)
 - [Tech Stack](#tech-stack)
 - [Key Features](#key-features)
-- [🚀 Live Demo](#live-demo)
-- [⭐️ Show your support](#support)
 
 <!-- PROJECT DESCRIPTION -->
 
@@ -23,14 +21,14 @@
 ### Tech Stack <a name="tech-stack"></a>
 
 - ReactJs
-- Redux
+- Redux Toolkit
 - Tailwind-CSS
 
 <!-- Features -->
 
 ### 🎯 Key Features <a name="key-features"></a>
 
-> ✅ Dynamic Content: Food 24/7 provides an excellent user experience by dynamically updating the content on the page and offering real-time information on restaurants, banners, offers, menus and availability to keep the users all engaged with the latest offers.
+> ✅ Dynamic Content: Food 24/7 provides an excellent user experience by dynamically updating the content on the page and offering real-time information on restaurants and menus  availability to keep the users all engaged.
 
 > ✅ Seamless Navigation: With React Router DOM, the app provides a smooth navigation experience, enabling users to effortlessly explore different sections, from discovering restaurants to adding to cart, without disruptions.
 
@@ -46,7 +44,3 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-<!-- - Live Website Preview : <a href="https://spicy-pricey-food-delivery.vercel.app/" target="_blank">https://spicy-pricey-food-delivery.vercel.app/</a> -->
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
