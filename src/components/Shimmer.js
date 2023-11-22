@@ -1,5 +1,5 @@
 const Shimmer = () => (
-  <div className="px-[11%] mt-10  flex gap-5 flex-wrap">
+  <div className="px-[11%] mt-10  flex gap-5 flex-wrap pt-20 pb-28 min-h-screen">
     <div className="shimmer-card sm:w-[30%] lg:w-[23%] w-full">
       <div className="shimmerBG media" />
       <div className="p-32">
