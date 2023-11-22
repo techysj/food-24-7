@@ -12,7 +12,7 @@ const RestroMenu = () => {
 
   if (menuInfo.length === 0) {
     return (
-      <div className="max-w-[800px] mt-10 mx-auto pt-28 pb-28 min-h-screen lg:px-0">
+      <div className="max-w-[800px] mt-10 mx-auto pt-28 pb-28 min-h-screen px-[5%] lg:px-0">
         <ShimmerMenu />
       </div>
     );

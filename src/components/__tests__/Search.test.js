@@ -20,14 +20,13 @@ test("Should search the items", async () => {
       </BrowserRouter>
     );
   });
-  
+
   const resCardBeforeSearch = screen.getAllByTestId("resCard");
   expect(resCardBeforeSearch.length).toBe(20);
 
-  const searchBtn = screen.getByRole("button", { name: "Search 🔍" });
   const searchInput = screen.getByTestId("searchInput");
   fireEvent.change(searchInput, { target: { value: "Burger" } });
-  fireEvent.click(searchBtn);
+  fireEvent.keyUp(searchInput, { key: "Enter", charCode: 13 });
   const resCardAfterSearch = screen.getAllByTestId("resCard");
 
   expect(resCardAfterSearch.length).toBe(1);
